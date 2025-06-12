@@ -3,7 +3,6 @@ package Behavioural.ChainOfResponsibility;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -49,6 +48,6 @@ class HandlerTest {
         double amount = 1001;
         Request request = new Request(amount);
         staff.handleRequest(request);
-        assertEquals("Director handled the request of: " + amount + "." , outputStream.toString().trim());
+        assertEquals("Director handled the request of: " + amount + ".", outputStream.toString().trim());
     }
 }
