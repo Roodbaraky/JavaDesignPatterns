@@ -1,7 +1,6 @@
 package Behavioural.ChainOfResponsibility;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -9,18 +8,16 @@ import java.io.PrintStream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 class HandlerTest {
 
     private Staff staff;
     private Manager manager;
     private Director director;
-    private OutputStream out = System.out;
     private ByteArrayOutputStream outputStream;
 
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp() {
         staff = new Staff();
         manager = new Manager();
         director = new Director();
