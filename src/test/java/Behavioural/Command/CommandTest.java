@@ -3,6 +3,8 @@ package Behavioural.Command;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -42,5 +44,17 @@ class CommandTest {
         assertTrue(light.isOn());
         lightSwitch.storeAndExecute(toggleCommand);
         assertFalse(light.isOn());
+    }
+
+    @Test
+    void allOffCommand() {
+        Light secondLight = new Light();
+        Command secondOnCommand = new OnCommand(secondLight);
+        Command allOffCommand = new AllOffCommand(List.of(light, secondLight));
+        lightSwitch.storeAndExecute(onCommand);
+        lightSwitch.storeAndExecute(secondOnCommand);
+        lightSwitch.storeAndExecute(allOffCommand);
+        assertFalse(light.isOn());
+        assertFalse(secondLight.isOn());
     }
 }
