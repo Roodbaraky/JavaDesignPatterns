@@ -57,4 +57,17 @@ class CommandTest {
         assertFalse(light.isOn());
         assertFalse(secondLight.isOn());
     }
+
+    @Test
+    void allOffCommand_VarArgs() {
+        Light secondLight = new Light();
+        Command secondOnCommand = new OnCommand(secondLight);
+        Command allOffCommand = new AllOffCommand(light, secondLight);
+        lightSwitch.storeAndExecute(onCommand);
+        lightSwitch.storeAndExecute(secondOnCommand);
+        lightSwitch.storeAndExecute(allOffCommand);
+        assertFalse(light.isOn());
+        assertFalse(secondLight.isOn());
+
+    }
 }

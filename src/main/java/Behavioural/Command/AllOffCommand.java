@@ -16,6 +16,10 @@ public class AllOffCommand implements Command {
         this.lights = lights;
     }
 
+    public AllOffCommand(Light... lights) {
+        this.lights = List.of(lights);
+    }
+
     @Override
     public void execute() {
         lights.stream()
