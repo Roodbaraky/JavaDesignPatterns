@@ -34,8 +34,7 @@ class MediatorTest {
     void testMessage() {
         User user1 = new BasicUser("John", chatRoom);
         User user2 = new BasicUser("Jane", chatRoom);
-        chatRoom.register(user1);
-        chatRoom.register(user2);
+        chatRoom.register(user1, user2);
         String message = "Hello World";
         user1.sendMessage(message);
         assertTrue(outputStream.toString().contains(message));
@@ -55,9 +54,7 @@ class MediatorTest {
         User user1 = new BasicUser("John", chatRoom);
         User user2 = new BasicUser("Jane", chatRoom);
         User user3 = new BasicUser("Jane", chatRoom);
-        chatRoom.register(user1);
-        chatRoom.register(user2);
-        chatRoom.register(user3);
+        chatRoom.register(user1, user2, user3);
         String message = "Hello World";
         user1.sendMessage(message);
         long newlineCount = outputStream

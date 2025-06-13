@@ -12,7 +12,7 @@ import java.util.List;
 public interface ChatRoom {
     void sendMessage(String message, User sender);
 
-    void register(User user);
+    void register(User... users);
 
     List<User> getUsers();
 }

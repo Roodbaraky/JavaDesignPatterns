@@ -7,6 +7,7 @@
 package Behavioural.Mediator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //Concrete Mediator
@@ -27,7 +28,7 @@ public class ChatRoomImpl implements ChatRoom {
     }
 
     @Override
-    public void register(final User user) {
-        users.add(user);
+    public void register(final User... users) {
+        this.users.addAll(Arrays.asList(users));
     }
 }
