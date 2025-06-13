@@ -13,7 +13,7 @@ class MementoTest {
     @BeforeEach
     void setUp() {
         textEditor = new TextEditor();
-        history = new History();
+        history = new History(3);
     }
 
     @Test
@@ -53,6 +53,22 @@ class MementoTest {
     }
 
     @Test void testRestoreText() {
+        assertNull(history.restore());
+    }
+
+    @Test
+    void testFullStack(){
+        textEditor.type("cat");
+        history.save(textEditor.save());
+        textEditor.type("dog");
+        history.save(textEditor.save());
+        textEditor.type("cat");
+        history.save(textEditor.save());
+        textEditor.type("dog");
+        history.save(textEditor.save());
+        assertEquals("catdogcatdog", history.restore().getText());
+        assertEquals("catdogcat", history.restore().getText());
+        assertEquals("catdog", history.restore().getText());
         assertNull(history.restore());
     }
 

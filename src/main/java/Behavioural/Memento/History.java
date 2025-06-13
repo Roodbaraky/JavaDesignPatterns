@@ -6,17 +6,32 @@
  */
 package Behavioural.Memento;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 //Caretaker
 public class History {
-    private final Stack<TextMemento> history = new Stack<>();
+    private int limit = 20;
+    private final ArrayDeque<TextMemento> history = new ArrayDeque<>();
 
+    public History(int limit) {
+        this.limit = limit;
+    }
+    public History() {
+
+    }
     public void save(TextMemento memento) {
+        if(isFull()){
+            history.removeLast();
+        }
         history.push(memento);
     }
 
     public TextMemento restore() {
         return history.isEmpty() ? null : history.pop();
     }
+
+    private boolean isFull(){
+        return history.size() == limit;
+    }
+
 }
