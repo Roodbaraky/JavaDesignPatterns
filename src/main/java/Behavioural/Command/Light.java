@@ -15,11 +15,10 @@ public class Light {
     private boolean on;
 
     public void toggle() {
-        on = !on;
         if (on) {
-            on();
-        } else {
             off();
+        } else {
+           on();
         }
     }
 

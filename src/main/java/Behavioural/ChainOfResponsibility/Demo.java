@@ -9,15 +9,15 @@ package Behavioural.ChainOfResponsibility;
 public class Demo {
 
     public static void main(String[] args) {
-        Staff John = new Staff();
-        Manager JamieAnn = new Manager();
-        Director Dan = new Director();
+        Staff john = new Staff();
+        Manager jamieAnn = new Manager();
+        Director dan = new Director();
 
-        John.setNext(JamieAnn);
-        JamieAnn.setNext(Dan);
+        john.setNext(jamieAnn);
+        jamieAnn.setNext(dan);
 
-        Request request = new Request(99);
-        John.handleRequest(request);
+        Request request = new Request(9999);
+        john.handleRequest(request);
     }
 
 }
