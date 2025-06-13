@@ -16,22 +16,20 @@ public class Light {
 
     public void toggle() {
         on = !on;
-        if(on){
+        if (on) {
             on();
-        }
-        else{
+        } else {
             off();
         }
     }
 
     public void on() {
-        if(!on){
-            on = true;
-        }
+        on = true;
         System.out.println("Light on");
     }
 
     public void off() {
+        on = false;
         System.out.println("Light off");
     }
 }
