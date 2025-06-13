@@ -1,6 +1,6 @@
 /*
  * (c) Midland Software Limited 2025
- * Name     : AndExpression.java
+ * Name     : OrExpression.java
  * Author   : RoodbarakyK
  * Date     : 13 Jun 2025
  */
@@ -8,20 +8,20 @@ package Behavioural.Interpreter;
 
 import java.util.List;
 
-public class AndExpression implements Expression {
-    List<Expression> expressions;
+public class OrExpression implements Expression {
+    private final List<Expression> expressions;
 
-    public AndExpression(Expression... expressions) {
+    public OrExpression(Expression... expressions) {
         this.expressions = List.of(expressions);
     }
 
     @Override
     public boolean interpret(final String context) {
         for (Expression expression : expressions) {
-            if (!expression.interpret(context)) {
-                return false;
+            if (expression.interpret(context)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
