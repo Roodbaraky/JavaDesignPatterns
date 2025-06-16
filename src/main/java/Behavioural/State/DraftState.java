@@ -8,10 +8,7 @@ package Behavioural.State;
 
 public class DraftState extends State {
 
-    private PullRequest pullRequest;
-
     public DraftState(final PullRequest pullRequest) {
-        this.pullRequest = pullRequest;
     }
 
     @Override

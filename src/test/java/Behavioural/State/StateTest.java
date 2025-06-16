@@ -57,6 +57,7 @@ class StateTest {
         void setUp() {
             pr.setState(new ReadyState(pr));
         }
+
         @Test
         void approve_transitionsToApproved() {
             pr.approve();
@@ -75,6 +76,34 @@ class StateTest {
             assertInstanceOf(ReadyState.class, pr.getState());
         }
 
+    }
+
+    @Nested
+    @DisplayName("When PR is in Approved state")
+    class ApprovedStateTests {
+        @BeforeEach
+        void setUp() {
+            pr.setState(new ApprovedState(pr));
+        }
+
+        @Test
+        void approve_NoChange() {
+            State state = pr.getState();
+            pr.approve();
+            assertSame(state, pr.getState());
+        }
+
+        @Test
+        void close_transitionsToClosed() {
+            pr.close();
+            assertInstanceOf(ClosedState.class, pr.getState());
+        }
+
+        @Test
+        void merge_transitionsToMerged() {
+            pr.merge();
+            assertInstanceOf(MergedState.class, pr.getState());
+        }
 
     }
 
@@ -87,7 +116,7 @@ class StateTest {
         }
 
         @Test
-        void noEffectOnMerged(){
+        void noEffectOnMerged() {
             State state = pr.getState();
             pr.markReady();
             pr.merge();
@@ -97,8 +126,9 @@ class StateTest {
         }
 
     }
+
     @Nested
-    @DisplayName("When PR is in Merged state")
+    @DisplayName("When PR is in Closed state")
     class ClosedStateTests {
         @BeforeEach
         void setUp() {
@@ -106,7 +136,7 @@ class StateTest {
         }
 
         @Test
-        void noEffectOnClosed(){
+        void noEffectOnClosed() {
             State state = pr.getState();
             pr.markReady();
             pr.close();
@@ -116,8 +146,5 @@ class StateTest {
         }
 
     }
-
-
-
 
 }
