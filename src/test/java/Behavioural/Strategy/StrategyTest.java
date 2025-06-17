@@ -1,24 +1,26 @@
 package Behavioural.Strategy;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.NoSuchElementException;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class StrategyTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"4111111111111111", "4012888888881881"})
+    @ValueSource(strings = {"4111111111111111", "4012888888881881", "4222222222222"})
     void testVisa(String cardNo) {
         VisaStrategy visa = new VisaStrategy();
         assertTrue(visa.isValid(cardNo));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"41111111111111112", "5012888888881881"})
+    @ValueSource(strings = {"41111111111111112", "5012888888881881", "378282246310005", "3782822463105"})
     void testVisa_Invalid(String cardNo) {
         VisaStrategy visa = new VisaStrategy();
         assertFalse(visa.isValid(cardNo));
@@ -32,7 +34,7 @@ class StrategyTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"358282246310005", "3714496353984312"})
+    @ValueSource(strings = {"358282246310005", "3714496353984312", "4111111111111111"})
     void testAmex_Invalid(String cardNo) {
         AmexStrategy amex = new AmexStrategy();
         assertFalse(amex.isValid(cardNo));
@@ -61,7 +63,5 @@ class StrategyTest {
         assertThrows(NoSuchElementException.class, () -> factory.resolve(cardNo));
 
     }
-
-
 
 }

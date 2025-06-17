@@ -12,6 +12,6 @@ public class VisaStrategy implements PaymentStrategy {
     public boolean isValid(final String input) {
         return luhnCheck(input)
                 && input.startsWith("4")
-                && (input.length() == 13 || input.length() == 16 || input.length() == 19);
+                && (input.length() == 13 || input.length() == 16);
     }
 }
