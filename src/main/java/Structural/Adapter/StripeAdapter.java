@@ -10,7 +10,7 @@ import static Structural.Adapter.CurrencyConvertor.convertToDollars;
 
 public class StripeAdapter implements PaymentProcessor {
 
-    private Stripe stripe;
+    private final Stripe stripe;
 
     public StripeAdapter(Stripe stripe) {
         this.stripe = stripe;

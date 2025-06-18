@@ -8,7 +8,7 @@ package Structural.Adapter;
 
 public class PaypalAdapter implements PaymentProcessor {
 
-    private Paypal paypal;
+    private final Paypal paypal;
 
     public PaypalAdapter(Paypal paypal) {
         this.paypal = paypal;
