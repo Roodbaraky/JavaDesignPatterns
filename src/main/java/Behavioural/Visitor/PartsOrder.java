@@ -13,23 +13,20 @@ public class PartsOrder implements Part {
     private final List<Part> parts = new ArrayList<>();
     private int subtotal;
 
-
     public PartsOrder() {
 
     }
 
     public void addPart(Part part) {
         parts.add(part);
-        subtotal+=part.getPrice();
+        subtotal += part.getPrice();
     }
-
 
     @Override
     public void accept(final PartVisitor visitor) {
         for (Part part : parts) {
             part.accept(visitor);
         }
-
 
     }
 
